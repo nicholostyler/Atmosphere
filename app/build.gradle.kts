@@ -1,8 +1,11 @@
+val room_version = "2.7.1"
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("plugin.serialization") version "2.1.21"
+    id("kotlin-kapt")
 
 }
 
@@ -63,6 +66,12 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0") // Or the latest 4.x.x version
     implementation("com.squareup.okhttp3:okhttp:4.12.0") // Ensure this is also present and compatible
 
+    // ROOM
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
     implementation(libs.volley)
     implementation(libs.androidx.media3.common.ktx)
